@@ -32,12 +32,12 @@ PubSubClient ClientMQTT(server, 1883, Client_wifi);
 // --Initiation variable timer--
 int lastNow = 0;
 
-const char *str_inp1 = "/cm/bipeds/1";
-const char *str_inp2 = "/cm/bipeds/2";
-const char *str_inp3 = "/cm/bipeds/3";
-const char *str_inp4 = "/cm/bipeds/4";
-const char *str_inp5 = "/cm/bipeds/5";
-const char *str_inp6 = "/cm/bipeds/6";
+const char *str_inp1 = "/cm/biped/1";
+const char *str_inp2 = "/cm/biped/2";
+const char *str_inp3 = "/cm/biped/3";
+const char *str_inp4 = "/cm/biped/4";
+const char *str_inp5 = "/cm/biped/5";
+const char *str_inp6 = "/cm/biped/6";
 
 String translateEncryptionType(wifi_auth_mode_t encryptionType)
 {
@@ -103,52 +103,41 @@ void callback(char *topic, byte *payload, unsigned int length)
 {
   float angle;
   angle = atof ((const char *)payload);
-  Serial.printf("%4.2f\n\r", angle);
-  uint32_t temps_haut = (angle + 80) * 10 / 160; 
+  uint32_t temps_haut = (angle + 90) * 0.32 + 51.2; 
 
   if (strcmp(str_inp1, topic) == 0)
   {
-    Serial.printf("%s\n\r", payload);
-    Serial.printf("%u\n\r", (uint32_t)payload*2);
-    // --Changement d'etat de la LED selon le message recu--
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    Serial.printf("Moteur 1\n\r");
+     ledcWrite(1, temps_haut);
   }
   else if (strcmp(str_inp2, topic) == 0)
   {
-    // --Changement d'etat de la LED selon le message recu--
-    Serial.printf("%s\n\r", payload);
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    Serial.printf("Moteur 2\n\r");
+    ledcWrite(2, temps_haut);
   }
   else if (strcmp(str_inp3, topic) == 0)
   {
-    // --Changement d'etat de la LED selon le message recu--
-    Serial.printf("%s\n\r", payload);
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    Serial.printf("Moteur 3\n\r");
+    ledcWrite(3, temps_haut);
   }
   else if (strcmp(str_inp4, topic) == 0)
   {
-    // --Changement d'etat de la LED selon le message recu--
     Serial.printf("Moteur 4\n\r");
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    ledcWrite(4, temps_haut);
   }
   else if (strcmp(str_inp5, topic) == 0)
   {
-    // --Changement d'etat de la LED selon le message recu--
     Serial.printf("Moteur 5\n\r");
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    ledcWrite(5, temps_haut);
   }
   else if (strcmp(str_inp6, topic) == 0)
   {
-    // --Changement d'etat de la LED selon le message recu--
     Serial.printf("Moteur 6\n\r");
-    // Temps_haut = payload
-    // ledcWrite(1, 77);
+    ledcWrite(6, temps_haut);
   }
+
+  Serial.printf("%u\n\r", temps_haut);
+  Serial.printf("%4.2f\n\r", angle);
 }
 
 // --Initiation des composants necessaires--
@@ -202,7 +191,7 @@ void setup()
   ClientMQTT.connect("client-id-69");
 
   // --Abonnement au sujet--
-  ClientMQTT.subscribe("/cm/bipeds/#");
+  ClientMQTT.subscribe("/cm/biped/#");
 }
 
 // --Boucle principale--
