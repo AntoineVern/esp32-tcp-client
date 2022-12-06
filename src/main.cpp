@@ -108,32 +108,32 @@ void callback(char *topic, byte *payload, unsigned int length)
 
   if (strcmp(str_inp1, topic) == 0)
   {
-    Serial.printf("Moteur 1\n\r");
+    //Serial.printf("Moteur 1\n\r");
      ledcWrite(1, temps_haut);
   }
   else if (strcmp(str_inp2, topic) == 0)
   {
-    Serial.printf("Moteur 2\n\r");
+    //Serial.printf("Moteur 2\n\r");
     ledcWrite(2, temps_haut);
   }
   else if (strcmp(str_inp3, topic) == 0)
   {
-    Serial.printf("Moteur 3\n\r");
+    //Serial.printf("Moteur 3\n\r");
     ledcWrite(3, temps_haut);
   }
   else if (strcmp(str_inp4, topic) == 0)
   {
-    Serial.printf("Moteur 4\n\r");
+    //Serial.printf("Moteur 4\n\r");
     ledcWrite(4, temps_haut);
   }
   else if (strcmp(str_inp5, topic) == 0)
   {
-    Serial.printf("Moteur 5\n\r");
+    //Serial.printf("Moteur 5\n\r");
     ledcWrite(5, temps_haut);
   }
   else if (strcmp(str_inp6, topic) == 0)
   {
-    Serial.printf("Moteur 6\n\r");
+    //Serial.printf("Moteur 6\n\r");
     ledcWrite(6, temps_haut);
   }
 
