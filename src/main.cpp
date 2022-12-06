@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "secrets.h"
+#include "Offset.h"
 #include "WiFi.h"
 #include <PubSubClient.h>
 #include <NTPClient.h>
@@ -202,4 +203,11 @@ void loop()
     Serial.printf("Client MQTT deconnecte\n\r");
   }
   ClientMQTT.loop();
+  //Test offset ne pas touché
+  /*ledcWrite(1, 80); //off +3.2
+  ledcWrite(2, 76.8); 
+  ledcWrite(3, 76.8);
+  ledcWrite(4, 76.8);
+  ledcWrite(5, 76.8); 
+  ledcWrite(6, 78); //off +1.2 */
 }
