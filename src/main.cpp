@@ -148,17 +148,17 @@ void setup()
   Serial.begin(115200);
 
   // --Moteur1--
-  pinMode(5, OUTPUT);
+  pinMode(19, OUTPUT);
   // --Moteur2--
   pinMode(18, OUTPUT);
   // --Moteur3--
-  pinMode(19, OUTPUT);
+  pinMode(5, OUTPUT);
   // --Moteur4--
-  pinMode(16, OUTPUT);
+  pinMode(21, OUTPUT);
   // --Moteur5--
   pinMode(17, OUTPUT);
   // --Moteur6--
-  pinMode(21, OUTPUT);
+  pinMode(16, OUTPUT);
 
   // Configurer fonction du PWM
   ledcSetup(1, 50, 10);
