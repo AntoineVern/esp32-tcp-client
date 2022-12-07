@@ -139,8 +139,8 @@ void callback(char *topic, byte *payload, unsigned int length)
     ledcWrite(6, temps_haut);
   }
 
-  Serial.printf("%u\n\r", temps_haut);
-  Serial.printf("%4.2f\n\r", angle);
+  //Serial.printf("%u\n\r", temps_haut);
+  //Serial.printf("%4.2f\n\r", angle);
 }
 
 // --Initiation des composants necessaires--
@@ -193,7 +193,7 @@ void setup()
 
   // --Connection au client MQTT--
   // ClientMQTT.connect("client-id-maisonneuve", user, pass);
-  ClientMQTT.connect("JEN");
+  ClientMQTT.connect("GREGORY");
 
   // --Abonnement au sujet--
   ClientMQTT.subscribe("/cm/biped/#");
