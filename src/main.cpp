@@ -102,6 +102,8 @@ void connectToNetwork()
 // --Fonction de retour de donne a l'abonnement
 void callback(char *topic, byte *payload, unsigned int length)
 {
+  uint8_t LED = digitalRead (13);
+  digitalWrite(13,!LED);
   float angle;
   angle = atof ((const char *)payload);
   uint32_t temps_haut = (angle + 90) * 0.32 + 51.2; 
@@ -147,6 +149,8 @@ void setup()
   // --Port serie--
   Serial.begin(115200);
 
+  // --LED--
+  pinMode(13, OUTPUT);
   // --Moteur1--
   pinMode(19, OUTPUT);
   // --Moteur2--
@@ -169,9 +173,9 @@ void setup()
   ledcSetup(6, 50, 10);
 
   // Attache le canal au GPIO pour etre controller
-  ledcAttachPin(5, 1);
+  ledcAttachPin(19, 1);
   ledcAttachPin(18, 2);
-  ledcAttachPin(19, 3);
+  ledcAttachPin(5, 3);
   ledcAttachPin(16, 4);
   ledcAttachPin(17, 5);
   ledcAttachPin(21, 6);
@@ -189,7 +193,7 @@ void setup()
 
   // --Connection au client MQTT--
   // ClientMQTT.connect("client-id-maisonneuve", user, pass);
-  ClientMQTT.connect("client-id-69");
+  ClientMQTT.connect("JEN");
 
   // --Abonnement au sujet--
   ClientMQTT.subscribe("/cm/biped/#");
