@@ -176,9 +176,9 @@ void setup()
   ledcAttachPin(19, 1);
   ledcAttachPin(18, 2);
   ledcAttachPin(5, 3);
-  ledcAttachPin(16, 4);
+  ledcAttachPin(21, 4);
   ledcAttachPin(17, 5);
-  ledcAttachPin(21, 6);
+  ledcAttachPin(16, 6);
 
   // --Pointeur fonction de retour--
   ClientMQTT.setCallback(callback);
